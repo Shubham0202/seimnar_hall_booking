@@ -1,36 +1,103 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" href="styles/payment.css">
   <title>Payment from</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+.anim-run{
+  animation: run 4s ease  infinite alternate;
+}
+/* Gradient shadow styles */
+
+@keyframes run {
+  0%, 100% {
+    transform: translatex(-50%);
+    transform: translateY(-30%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    background: linear-gradient(45deg,blueviolet,deepskyblue);
+  }
+  50%{
+    filter: blur(10px);
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    background: linear-gradient(45deg,green,deepskyblue);
+  }
+}
+
+  </style>
 </head>
-<body>
-  <div class="gradient-clr"></div>
-    <div class="grid">
-  <div class="credit-card-form">
-    <h2>Credit Card Payment</h2>
-    <form>
-      <div class="form-group">
-        <label for="card-number">Card Number</label>
-        <input type="text" id="card-number" placeholder="Card number" maxlength="12">
+
+<body class="overflow-y-scroll">
+  <div class="parent">
+<div class="isAnimate w-96 h-96 rounded-full absolute top-[50%] left-0  hover:blur-md transition-all duration-500"></div>
+<div class="isAnimate w-96 h-96 rounded-full absolute top-[50%] right-0 hover:blur-md transition-all duration-500"></div>
+    <div class="upper-container px-8 py-4">
+      <div class="back-button flex items-center justify-between">
+        <a href="#" class="back-icon hover:bg-gray-100 transition-all duration-300 cursor-pointer rounded-full w-fit p-1"> <svg
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-chevron-left w-10 h-10">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg></a>
+        <p class="text-xl capitalize font-semibold">make a payment</p>
+        <p></p>
       </div>
-      <div class="form-group">
-        <label for="card-holder">Card Holder</label>
-        <input type="text" id="card-holder" placeholder="Card holder's name">
+    </div>
+     <!-- card info -->
+     <div class="form-container flex items-center justify-center relative z-10">
+
+     <form action="#" method="post" class="mx-8 hover:shadow-md hover:shadow-indigo-500/50 transition-all duration-500  p-4 pb-8 rounded-lg pay-form bg-white text-black">
+     <div class="card-info flex items-center justify-center">
+      <div class="card-name good-pay my-4 px-14 py-10 bg-paymentReqPrimaryClr text-white w-fit rounded-lg">
+        <h2 class="text-3xl font-bold">GOOD Pay</h2>
       </div>
-      <div class="form-row">
-        <div class="form-group form-column">
-          <label for="expiry-date">Expiry Date</label>
-          <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5">
+    </div>
+
+    <div class="inputs">
+      
+      <div class="inp-data flex items-start flex-col w-full">
+        <label for="card-no" class="capitalize mb-2 text-lg">card number</label>
+        <input type="text" class="inp-tag checkNum bg-gray-100 px-4 py-3 rounded-lg shadow focus-within:bg-white w-full" name="card-no">
+      </div>
+      <div class="w-full flex items-center gap-4">
+        <div class="inp-data flex items-start flex-col w-full">
+          <label for="expiry-date" class="capitalize mb-2 text-lg">expiry date</label>
+          <input type="text" id="expiry-date" class="inp-tag checkNum bg-gray-100 px-4 py-3 rounded-lg shadow focus-within:bg-white w-full" name="expiry-date">
         </div>
-        <div class="form-group form-column">
-          <label for="cvv">CVV</label>
-          <input type="text" id="cvv" placeholder="CVV" maxlength="3">
+        <div class="inp-data flex items-start flex-col">
+          <label for="card-no" class="capitalize mb-2 text-lg">CVV</label>
+          <input type="text" class="inp-tag checkNum bg-gray-100 px-4 py-3 rounded-lg shadow focus-within:bg-white w-full" name="card-no" maxlength="3">
         </div>
       </div>
-      <button type="submit" class="pay-now">Pay Now</button>
-    </form>
-  </div>
+      <div class="inp-data flex items-start flex-col">
+        <label for="card-no" class="capitalize mb-2 text-lg">card holder name</label>
+        <input type="text" class="inp-tag bg-gray-100 px-4 py-3 rounded-lg shadow focus-within:bg-white w-full" name="card-no">
+      </div>
+
+    </div>
+<!-- inputs end -->
+    <div class="save-card-details cursor-pointer my-8 flex items-center gap-4">
+      <div class="save-details-icon p-1 bg-paymentReqPrimaryClr rounded-full border-2 text-white transition-all duration-300" data-saved="true">
+        <i data-feather="check" class="w-4 h-4"></i>
+      </div>
+      <p class="text-gray-500 capitalize w-full">save credit card details</p>
+    </div>
+    <div class="pay-now-container text-center">
+      <button class="capitalize px-8 py-3 w-full text-white rounded-full transition-all duration-300 bg-paymentReqPrimaryClr font-bold">pay now</button>
+    </div>
+  </form>
 </div>
-</body>
+  </div>
+ </body>
+<script>
+  feather.replace();
+</script>
+<script src="scripts/tailwind.js"></script>
+<script src="scripts/bounceAnimationHoverForm.js"></script>
+<script src="scripts/spinLoaderInBtns.js"></script>
+<script src="scripts/saveCardDetailsToggle.js"></script>
+<script src="scripts/checkisNumber.js"></script>
 </html>

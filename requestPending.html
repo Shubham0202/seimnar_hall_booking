@@ -54,8 +54,8 @@
     <div class="main-container sm:grid grid-cols-2 place-items-center px-14">
       <div class="main-container-title">
         <h2 class="capitalize font-bold text-4xl">your request send succesfully</h2>
-        <p class="text-gray-500 mt-4">Your request will be pending we will send your request status on your Mail.</p>
-        <p class="text-gray-500 mb-6">You can also track your request in your Dashboard.</p>
+        <p class="text-gray-500 mt-4 text-lg">Your request will be pending we will send your request status on your Mail.</p>
+        <p class="text-gray-500 mb-6 text-lg">You can also track your request in your Dashboard.</p>
         
         <div class="progress-bar grid grid-cols-2 mb-6">
           <div class="bg-paymentReqPrimaryClr p-2 rounded-full after relative">
@@ -67,9 +67,9 @@
             </p>
           </div>
           <div class="bg-paymentReqSecondaryClr p-2 rounded-full relative">
-            <p class="absolute p-2 rounded-full bg-paymentReqSecondaryClr shadow top-[-11px] right-0">
+            <a href="payment1.html" class="absolute p-2 rounded-full bg-paymentReqSecondaryClr shadow top-[-11px] right-0">
               <i data-feather="coffee"></i>
-            </p>
+            </a>
           </div>
         </div>
 
@@ -79,7 +79,10 @@
           <p class="text-gray-900 font-semibold">Make a payment</p>
         </div>
 
-        <a href="#" class="back-home-btn my-4 capitalize text-lg px-6 py-2 border-2 rounded-lg block w-fit border-paymentReqPrimaryClr text-paymentReqPrimaryClr">back home</a>
+        <div class="action-btns flex items-center gap-4">
+          <a href="#" class="back-home-btn my-4 capitalize text-lg px-8 py-2 border-2 rounded-lg block w-fit border-paymentReqPrimaryClr text-white bg-paymentReqPrimaryClr hover:bg-secondaryHoverBg hover:text-black transition-all duration-300 shadow">open dashboard</a>
+          <a href="#" class="back-home-btn my-4 capitalize text-lg px-8 py-2 border-2 rounded-lg block w-fit border-paymentReqPrimaryClr text-paymentReqPrimaryClr hover:bg-secondaryHoverBg transition-all duration-300">back home</a>
+        </div>
       </div>
       <!-- main title end -->
       <div class="main-container-img">

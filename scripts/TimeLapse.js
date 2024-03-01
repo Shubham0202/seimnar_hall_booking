@@ -8,10 +8,29 @@ const inputTime = document.querySelectorAll('.input-time');
 function timeLapse(hour)
 {
     const lapse=[];
+    let k=0;
+    let stringToNum;
     for(let i=8;i<=20;i+=hour)
     {
-        lapse.push(`${i}-${i+hour}`);
+        if(i+1!=19)
+        {
+        if(i>12)
+        {
+            k = Number(i.toString())-2;
+            stringToNum = Number(k.toString().charAt(1));
+            console.log(typeof k);
+            lapse.push(`${stringToNum}-${stringToNum+hour} PM`);
+        }
+        else
+        {
+            if(i==12)
+            lapse.push(`${12}-${1} PM`);
+            else
+            lapse.push(`${i}-${i+hour} AM`);
+        }
+
     }
+}
     return lapse;
 }
 // by default timelpase is set to be 1
