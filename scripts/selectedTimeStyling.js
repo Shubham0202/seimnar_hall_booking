@@ -1,5 +1,5 @@
 
-const timebgClr = "bg-blue-700";
+const timebgClr = "bg-paymentReqPrimaryClr";
 const timeClr = "text-white";
 const timeBorderTransparent = "border-transparent";
 const timeBorderClr = "border-gray-400";

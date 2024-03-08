@@ -36,7 +36,7 @@ function timeLapse(hour)
 // by default timelpase is set to be 1
 // timeLapse(1);
 // manual change by user
-console.log(timeLapse(1))
+console.log(timeLapse(1));
 timeLapse(1).forEach((lapse,index)=>{
     timeLabel[index].innerHTML=lapse;
     // set lapse as value of input tag

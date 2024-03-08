@@ -1,6 +1,6 @@
 const selectDate = document.querySelectorAll('.date-box');
 const dayLabel = document.querySelectorAll('.day-labels');
-const boxBg = 'bg-blue-700';
+const boxBg = 'bg-paymentReqPrimaryClr';
 const boxClr = 'text-white';
 const borderClr = 'border-transparent';
 selectDate.forEach((currDate,index)=>{

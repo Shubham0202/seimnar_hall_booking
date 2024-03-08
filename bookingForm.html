@@ -29,7 +29,7 @@
 
                     <div class="date-week flex items-center flex-wrap gap-4 mt-4">
                         
-                        <label for="date-1" class="date-box box cursor-pointer px-6 py-2 bg-blue-700 rounded-md text-white border-2 border-transparent">
+                        <label for="date-1" class="date-box box cursor-pointer px-6 py-2 bg-paymentReqPrimaryClr rounded-md text-white border-2 border-transparent">
                             <p class="day-labels uppercase">fri</p>
                             <h3 class="date-labels font-bold text-xl">07</h3>
                             <input type="radio" name="ap-date" id="date-1" class="input-label hidden" checked>
@@ -94,7 +94,7 @@
 
                     <div class="flex items-center flex-wrap gap-4 mt-4">
                         
-                        <label for="time-1" class="time-box cursor-pointer px-6 py-2 bg-blue-700 rounded-md text-white border-2 border-transparent">
+                        <label for="time-1" class="time-box cursor-pointer px-6 py-2 bg-paymentReqPrimaryClr rounded-md text-white border-2 border-transparent">
                          <h3 class="time-label font-semibold text-lg uppercase">08-09 am</h3>
                             <input type="radio" name="ap-time" id="time-1" class="hidden input-time">
                         </label>
@@ -146,10 +146,7 @@
                          <h3 class="time-label font-semibold text-lg uppercase">08-09 am</h3>
                             <input type="radio" name="ap-time" id="time-12" class="hidden input-time">
                         </label>
-                        <label for="time-13" class="time-box cursor-pointer px-6 py-2 rounded-md border-2 border-gray-400">
-                         <h3 class="time-label font-semibold text-lg uppercase">08-09 am</h3>
-                            <input type="radio" name="ap-time" id="time-13" class="hidden input-time">
-                        </label>
+                     
 
                     </div>
 
@@ -159,7 +156,7 @@
             <!-- section2 -->
             <div class="setion-2 p-2 bg-white rounded-md my-4">
                 <div class="sec-2-sub px-4 py-2 flex gap-4">
-                    <i class="fa-solid fa-school text-blue-700"></i>
+                    <i class="fa-solid fa-school text-paymentReqPrimaryClr"></i>
                     <div class="text-all-sise">
                         <h3 class="capitalize text-lg">department name <span class="text-red-500">*</span></h3>
                         <p class="text-gray-400">Enter Deparment name</p>
@@ -178,7 +175,7 @@
         <!--section 3 -->
         <div class="setion-2 p-2 bg-white rounded-md my-4">
             <div class="sec-2-sub px-4 py-2 flex gap-4">
-                <i class="fa-regular fa-user text-2xl text-blue-700"></i>
+                <i class="fa-regular fa-user text-2xl"></i>
                 <div class="text-all-sise">
                     <h3 class="capitalize text-lg">booking name <span class="text-red-500">*</span></h3>
                     <p class="text-gray-400">To identify the user .</p>
@@ -186,7 +183,7 @@
                 </div>
             </div>
             <div class="sec-2-sub px-4 py-2 flex gap-4">
-                <i class="text-blue-700" data-feather="alert-triangle"></i>
+                <i class="text-red-500" data-feather="alert-triangle"></i>
                 <div class="text-all-sise">
                     <h3 class=" text-lg">Reason for want Seminar hall <span class="text-red-500">*</span></h3>
                     <p class="text-gray-400">Avoid falsy reason .</p>
@@ -228,7 +225,7 @@
                 <h3 class="font-semibold text-lg">$6200</h3>
             </div>
            <a href="requestPending.html" class="procced-to-pay">
-            <button class="pay-button capitalize py-3 w-full font-semibold text-white bg-blue-700 rounded-md hover:bg-gray-700 transition"> <i data-feather="credit-card" class="inline-block"></i> request hall</button>
+            <button class="pay-button capitalize py-3 w-full font-semibold text-white bg-paymentReqPrimaryClr rounded-md hover:bg-gray-700 transition"> <i data-feather="credit-card" class="inline-block"></i> request hall</button>
            </a>
 
         </div>
@@ -248,6 +245,7 @@
 <script>
     feather.replace();
   </script>
+  <script src="scripts/tailwind.js"></script>
   <script src="scripts/selectedDateStyling.js"></script>
   <script src="scripts/settingDayAndDate.js"></script>
   <script src="scripts/toggleCustomizeTime.js"></script>
