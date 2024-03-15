@@ -18,7 +18,6 @@ function timeLapse(hour)
         {
             k = Number(i.toString())-2;
             stringToNum = Number(k.toString().charAt(1));
-            console.log(typeof k);
             lapse.push(`${stringToNum}-${stringToNum+hour} PM`);
         }
         else

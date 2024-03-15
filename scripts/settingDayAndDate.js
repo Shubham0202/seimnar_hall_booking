@@ -28,7 +28,7 @@ for(let i=0;i<7;i++)
     // console.log(Week[counter]);
     dayLabels[i].innerHTML = Week[counter];
     // setting day and date value to input tag
-    inputLabel[i].setAttribute('value',Week[counter]+","+Number(todayDate+i));
+    inputLabel[i].setAttribute('value',Week[counter]+" "+Number(todayDate+i)+","+months[month]+" "+year);
     // checking counter is greater than the weeks (7)
     // here week is started from 0 index
     (counter >5)?counter=0:counter++;

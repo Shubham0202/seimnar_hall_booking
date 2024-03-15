@@ -1,3 +1,32 @@
+<?php
+include "connection.php";
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $app_date = $_POST['ap-date'];
+    $app_time = $_POST['ap-time'];
+    $department_name = $_POST['deparment-name'];
+    $mobile_no = $_POST['mobile-no'];
+    $booker_name = $_POST['booker-name'];
+    $reason = $_POST['reason'];
+
+    $u_name = "Yash Bhosale";
+    $status = "pending";
+
+    $sql = "INSERT INTO `bookings`(`b_date`, `b_time`, `department_name`, `b_mobile_no`, `b_booker_name`, `b_reason`, `status`, `U_Id`,`b_request`) VALUES ('$app_date','$app_time','$department_name','$mobile_no','$booker_name','$reason','$status','$u_name',CURRENT_TIMESTAMP())";
+
+    $result = mysqli_query($conn,$sql);
+    if($result)
+    {
+        echo "data inserted";
+    }
+    else
+    {
+        
+        echo "query Error";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +39,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="bg-gray-100 min-h-screen flex items-start">
+    <form method="post" class="bg-gray-100 min-h-screen flex items-start">
         <div class="main-form p-2">
             <!-- section 1 -->
             <div class="section-1 my-4 p-2 bg-white rounded-md">
@@ -96,7 +125,7 @@
                         
                         <label for="time-1" class="time-box cursor-pointer px-6 py-2 bg-paymentReqPrimaryClr rounded-md text-white border-2 border-transparent">
                          <h3 class="time-label font-semibold text-lg uppercase">08-09 am</h3>
-                            <input type="radio" name="ap-time" id="time-1" class="hidden input-time">
+                            <input type="radio" name="ap-time" id="time-1" class="hidden input-time" checked>
                         </label>
                         <label for="time-2" class="time-box cursor-pointer px-6 py-2 rounded-md border-2 border-gray-400">
                             <h3 class="time-label font-semibold text-lg uppercase">08-09 am</h3>
@@ -160,7 +189,9 @@
                     <div class="text-all-sise">
                         <h3 class="capitalize text-lg">department name <span class="text-red-500">*</span></h3>
                         <p class="text-gray-400">Enter Deparment name</p>
-                        <input type="text" class="border-2 rounded-md px-3 py-2" placeholder="eg. Computer Science" maxlength="10">
+                        <input name="deparment-name" type="text" class="popup-inputs border-2 rounded-md px-3 py-2 sm:w-80" id="department" placeholder="eg. Computer Science" >
+                        <div id="departments-popup" class="allPopUps hidden bg-gray-100 rounded-md max-w-80">
+                          </div>
                     </div>
                 </div>
                 <div class="sec-2-sub px-4 py-2 flex gap-4">
@@ -168,7 +199,7 @@
                     <div class="text-all-sise">
                         <h3 class="capitalize text-lg">mobile number <span class="text-red-500">*</span></h3>
                         <p class="text-gray-400">Enter the number on which you want to receive checkup related information.</p>
-                        <input type="text" class="border-2 rounded-md px-3 py-2" placeholder="10 digit number" maxlength="10">
+                        <input name="mobile-no" type="text" class="border-2 rounded-md px-3 py-2 sm:w-80" placeholder="10 digit number" maxlength="10">
                     </div>
                 </div>
             </div>
@@ -179,16 +210,16 @@
                 <div class="text-all-sise">
                     <h3 class="capitalize text-lg">booking name <span class="text-red-500">*</span></h3>
                     <p class="text-gray-400">To identify the user .</p>
-                    <input type="text" class="border-2 rounded-md px-3 py-2" placeholder="Yash Bhosale" maxlength="10">
+                    <input name="booker-name" type="text" class="border-2 rounded-md px-3 py-2 sm:w-80" placeholder="Yash Bhosale">
                 </div>
             </div>
             <div class="sec-2-sub px-4 py-2 flex gap-4">
                 <i class="text-red-500" data-feather="alert-triangle"></i>
                 <div class="text-all-sise">
                     <h3 class=" text-lg">Reason for want Seminar hall <span class="text-red-500">*</span></h3>
-                    <p class="text-gray-400">Avoid falsy reason .</p>
-                    <input type="text" class="border-2 rounded-md px-3 py-2" placeholder="eg. for Cultural Fest" maxlength="10">
-                    <div class="reasons-popup hidden bg-gray-100 rounded-md">
+                    <p class="text-gray-400">Avoid falsy reason.</p>
+                    <input name="reason" type="text" class="popup-inputs border-2 rounded-md px-3 py-2 sm:w-80" placeholder="eg. for Cultural Fest">
+                    <div class="allPopUps reasons-popup hidden bg-gray-100 rounded-md">
                         <p class="reasons line-clamp-1 py-2 px-4 rounded-md cursor-pointer hover:bg-gray-300 capitalize">Cultural Fest</p>
                         <p class="reasons line-clamp-1 py-2 px-4 rounded-md cursor-pointer hover:bg-gray-300 capitalize">school function</p>
                         <p class="reasons line-clamp-1 py-2 px-4 rounded-md cursor-pointer hover:bg-gray-300 capitalize">annual function</p>
@@ -224,9 +255,8 @@
                 <p class="totalbill-title capitalize font-semibold">total ammount</p>
                 <h3 class="font-semibold text-lg">$6200</h3>
             </div>
-           <a href="requestPending.html" class="procced-to-pay">
-            <button class="pay-button capitalize py-3 w-full font-semibold text-white bg-paymentReqPrimaryClr rounded-md hover:bg-gray-700 transition"> <i data-feather="credit-card" class="inline-block"></i> request hall</button>
-           </a>
+            <!-- submit button -->
+            <button type="submit" class="pay-button capitalize py-3 w-full font-semibold text-white bg-paymentReqPrimaryClr rounded-md hover:bg-gray-700 transition"> <i data-feather="credit-card" class="inline-block"></i> request hall</button>
 
         </div>
 
@@ -240,7 +270,7 @@
             </div>
         </div>
     </div>
-</div>
+    </form>
 </body>
 <script>
     feather.replace();
@@ -250,6 +280,7 @@
   <script src="scripts/settingDayAndDate.js"></script>
   <script src="scripts/toggleCustomizeTime.js"></script>
   <script src="scripts/TimeLapse.js"></script>
-  <script src="scripts/selectTime.js"></script>
   <script src="scripts/selectedTimeStyling.js"></script>
+  <script src="admin/ajax/getDeparment.js"></script>
+  <script src="scripts/selectPopupValues.js"></script>
 </html>
