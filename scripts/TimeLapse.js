@@ -1,6 +1,8 @@
 
 const selectTimeLapseContainer = document.querySelectorAll('.select-lapse-container');
 const displayCustomDate = document.querySelector('.display-custom-date');
+const hallPrice = document.querySelector('.hall-price');
+const totalHallPrice = document.querySelector('.total-hall-price');
 const timeLabel = document.querySelectorAll('.time-label');
 const timeBox = document.querySelectorAll('.time-box');
 const inputTime = document.querySelectorAll('.input-time');
@@ -45,8 +47,13 @@ timeLapse(1).forEach((lapse,index)=>{
 });
 selectTimeLapseContainer.forEach((lapseContainer,index)=>{
     lapseContainer.addEventListener('click',()=>{
-       
+    //    select timeing hr and set the price according to the hrs
+        const staffCharges  = document.querySelector(".staff-charges").innerHTML.split("₹")[1];
+        const hallMaintence  = document.querySelector(".hall-maintainance").innerHTML.split("₹")[1];
         displayCustomDate.innerHTML=index+"HR";
+        hallPrice.innerHTML=`₹${500*index}`;
+        totalHallPrice.innerHTML = `₹${500*index+Number(staffCharges)+Number(hallMaintence)}`;
+
         selectTimeLapseContainer.forEach(s=>{s.classList.remove('bg-gray-200');s.classList.replace('text-black','text-gray-500')});
         lapseContainer.classList.add('bg-gray-200');
         lapseContainer.classList.replace('text-gray-500','text-black') ;

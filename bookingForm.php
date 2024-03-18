@@ -1,4 +1,6 @@
 <?php
+if(!isset($_COOKIE['userid']))
+    header("location:login.php");
 include "connection.php";
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
@@ -9,15 +11,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     $booker_name = $_POST['booker-name'];
     $reason = $_POST['reason'];
 
-    $u_name = "Yash Bhosale";
+    $u_id = $_COOKIE['u_id'];
     $status = "pending";
 
-    $sql = "INSERT INTO `bookings`(`b_date`, `b_time`, `department_name`, `b_mobile_no`, `b_booker_name`, `b_reason`, `status`, `U_Id`,`b_request`) VALUES ('$app_date','$app_time','$department_name','$mobile_no','$booker_name','$reason','$status','$u_name',CURRENT_TIMESTAMP())";
+    $sql = "INSERT INTO `bookings`(`b_date`, `b_time`, `department_name`, `b_mobile_no`, `b_booker_name`, `b_reason`, `status`, `U_Id`,`b_request`) VALUES ('$app_date','$app_time','$department_name','$mobile_no','$booker_name','$reason','$status','$u_id',CURRENT_TIMESTAMP())";
 
     $result = mysqli_query($conn,$sql);
     if($result)
     {
-        echo "data inserted";
+        header("location:requestPending.php");
     }
     else
     {
@@ -39,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <form method="post" class="bg-gray-100 min-h-screen flex items-start">
+    <form method="post" class="bg-gray-100 min-h-screen lg:grid grid-cols-[70%_70%]">
         <div class="main-form p-2">
             <!-- section 1 -->
             <div class="section-1 my-4 p-2 bg-white rounded-md">
@@ -189,7 +191,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     <div class="text-all-sise">
                         <h3 class="capitalize text-lg">department name <span class="text-red-500">*</span></h3>
                         <p class="text-gray-400">Enter Deparment name</p>
-                        <input name="deparment-name" type="text" class="popup-inputs border-2 rounded-md px-3 py-2 sm:w-80" id="department" placeholder="eg. Computer Science" >
+                        <input name="deparment-name" type="text" class="popup-inputs border-2 rounded-md px-3 py-2 sm:w-80" id="department" placeholder="eg. Computer Science" required>
                         <div id="departments-popup" class="allPopUps hidden bg-gray-100 rounded-md max-w-80">
                           </div>
                     </div>
@@ -199,7 +201,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     <div class="text-all-sise">
                         <h3 class="capitalize text-lg">mobile number <span class="text-red-500">*</span></h3>
                         <p class="text-gray-400">Enter the number on which you want to receive checkup related information.</p>
-                        <input name="mobile-no" type="text" class="border-2 rounded-md px-3 py-2 sm:w-80" placeholder="10 digit number" maxlength="10">
+                        <input name="mobile-no" type="text" class="border-2 rounded-md px-3 py-2 sm:w-80" placeholder="10 digit number" maxlength="10" required>
                     </div>
                 </div>
             </div>
@@ -210,7 +212,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 <div class="text-all-sise">
                     <h3 class="capitalize text-lg">booking name <span class="text-red-500">*</span></h3>
                     <p class="text-gray-400">To identify the user .</p>
-                    <input name="booker-name" type="text" class="border-2 rounded-md px-3 py-2 sm:w-80" placeholder="Yash Bhosale">
+                    <input name="booker-name" type="text" class="border-2 rounded-md px-3 py-2 sm:w-80" placeholder="Yash Bhosale" required>
                 </div>
             </div>
             <div class="sec-2-sub px-4 py-2 flex gap-4">
@@ -218,7 +220,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 <div class="text-all-sise">
                     <h3 class=" text-lg">Reason for want Seminar hall <span class="text-red-500">*</span></h3>
                     <p class="text-gray-400">Avoid falsy reason.</p>
-                    <input name="reason" type="text" class="popup-inputs border-2 rounded-md px-3 py-2 sm:w-80" placeholder="eg. for Cultural Fest">
+                    <input name="reason" type="text" class=" border-2 rounded-md px-3 py-2 sm:w-80" placeholder="eg. for Cultural Fest">
                     <div class="allPopUps reasons-popup hidden bg-gray-100 rounded-md">
                         <p class="reasons line-clamp-1 py-2 px-4 rounded-md cursor-pointer hover:bg-gray-300 capitalize">Cultural Fest</p>
                         <p class="reasons line-clamp-1 py-2 px-4 rounded-md cursor-pointer hover:bg-gray-300 capitalize">school function</p>
@@ -232,28 +234,28 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
         </div>
         <!-- booking details -->
-        <div class="w-[30%]">
+        <div class="sm:w-[40%]">
 
         <div class="booking-details px-4 py-2 bg-white rounded-md mx-2 my-6">
             <h2 class="details-title capitalize font-semibold text-xl mt-2 mb-4">booking details</h2>
             <div class="total-bill border-b-2 border-t-2 py-2">
                 <div class="flex items-center justify-between py-2">
                     <p class="totalbill-title capitalize">seminar hall bill<span class="text-red-500">*</span></p>
-                    <h3 class="font-semibold text-lg">$4000</h3>
+                    <h3 class="font-semibold text-lg hall-price">₹500</h3>
                 </div>
                 <div class="flex items-center justify-between py-2">
                     <p class="totalbill-title capitalize">staff charges</p>
-                    <h3 class="font-semibold text-lg">$1200</h3>
+                    <h3 class="font-semibold text-lg staff-charges">₹120</h3>
                 </div>
                 <div class="flex items-center justify-between py-2">
                     <p class="totalbill-title capitalize">maintenance</p>
-                    <h3 class="font-semibold text-lg">$1000</h3>
+                    <h3 class="font-semibold text-lg hall-maintainance">₹20</h3>
                 </div>
             </div>
 
             <div class="total-ammount flex items-center justify-between my-4">
                 <p class="totalbill-title capitalize font-semibold">total ammount</p>
-                <h3 class="font-semibold text-lg">$6200</h3>
+                <h3 class="font-semibold text-lg total-hall-price">₹640</h3>
             </div>
             <!-- submit button -->
             <button type="submit" class="pay-button capitalize py-3 w-full font-semibold text-white bg-paymentReqPrimaryClr rounded-md hover:bg-gray-700 transition"> <i data-feather="credit-card" class="inline-block"></i> request hall</button>
