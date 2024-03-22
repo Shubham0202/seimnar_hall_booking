@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $username =$_POST['username'];
     $password =$_POST['password'];
-    $sql = "SELECT * FROM users WHERE u_name = '$username'";
+    $sql = "SELECT * FROM users WHERE u_email = '$username'";
 
     $result = mysqli_query($conn, $sql);
 
@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<br>Password not match";
     } else {
         echo "Login failed! Invalid username or password.";
+        mysqli_error($conn);
     }
 
     // Free result set
@@ -48,7 +49,7 @@ if (isset($_POST['registerBtn'])) {
 
        // Check if the email already exists in the database
        $check_sql = "SELECT * FROM users WHERE u_email = '$email'";
-       $check_result = mysqli_query($con, $check_sql);
+       $check_result = mysqli_query($conn, $check_sql);
        if (mysqli_num_rows($check_result) > 0) {
            echo "Error: Email already registered.";
            exit();

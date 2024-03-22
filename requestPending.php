@@ -27,7 +27,7 @@
           <a href="#" class="hover:bg-secondaryHoverBg transition-all rounded-lg font-semibold capitalize px-4 py-2">pricing</a>
         </li>
         <li>
-          <a href="#"
+          <a href="user/dashboard.php"
             class="hover:bg-secondaryHoverBg transition-all rounded-lg font-semibold capitalize px-4 py-2">dashboard</a>
         </li>
         <li>
@@ -81,7 +81,7 @@
 
         <div class="action-btns flex items-center gap-4">
           <a href="user/dashboard.php" class="back-home-btn my-4 capitalize text-lg px-8 py-2 border-2 rounded-lg block w-fit border-paymentReqPrimaryClr text-white bg-paymentReqPrimaryClr hover:bg-secondaryHoverBg hover:text-black transition-all duration-300 shadow">open dashboard</a>
-          <a href="#" class="back-home-btn my-4 capitalize text-lg px-8 py-2 border-2 rounded-lg block w-fit border-paymentReqPrimaryClr text-paymentReqPrimaryClr hover:bg-secondaryHoverBg transition-all duration-300">back home</a>
+          <a href="index.html" class="back-home-btn my-4 capitalize text-lg px-8 py-2 border-2 rounded-lg block w-fit border-paymentReqPrimaryClr text-paymentReqPrimaryClr hover:bg-secondaryHoverBg transition-all duration-300">back home</a>
         </div>
       </div>
       <!-- main title end -->
