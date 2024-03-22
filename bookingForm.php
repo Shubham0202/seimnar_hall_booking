@@ -1,9 +1,12 @@
 <?php
+include 'sendMail.php';
 if(!isset($_COOKIE['userid']))
     header("location:login.php");
 include "connection.php";
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
+
+
     $app_date = $_POST['ap-date'];
     $app_time = $_POST['ap-time'];
     $department_name = $_POST['deparment-name'];
@@ -11,21 +14,70 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     $booker_name = $_POST['booker-name'];
     $reason = $_POST['reason'];
 
-    $u_id = $_COOKIE['u_id'];
+    $u_id = $_COOKIE['userid'];
     $status = "pending";
+    
+$sql = "SELECT * FROM bookings WHERE b_date= '$app_date' AND b_time='$app_time' AND status='booked'";
 
-    $sql = "INSERT INTO `bookings`(`b_date`, `b_time`, `department_name`, `b_mobile_no`, `b_booker_name`, `b_reason`, `status`, `U_Id`,`b_request`) VALUES ('$app_date','$app_time','$department_name','$mobile_no','$booker_name','$reason','$status','$u_id',CURRENT_TIMESTAMP())";
-
-    $result = mysqli_query($conn,$sql);
-    if($result)
+$result = mysqli_query($conn,$sql);
+if($result)
+{
+    if(mysqli_num_rows($result)>=1)
     {
-        header("location:requestPending.php");
+        echo '<div class="success-msg py-2 px-4 bg-red-300 text-red-700 rounded-md w-fit fixed top-24 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+        <p>
+        <i data-feather="calendar" class="inline"></i>'.$app_date.' is Already Booked at '.$app_time.' please choose another slot <i data-feather="check-circle" class="inline"></i>
+        </p>
+        <a href="#" class="mt-2 underline block w-fit">Check All Bookings Here <i data-feather="chevron-right" class="inline"></i></a>
+        </div>';
+
     }
     else
     {
-        
-        echo "query Error";
+        $sql = "INSERT INTO `bookings`(`b_date`, `b_time`, `department_name`, `b_mobile_no`, `b_booker_name`, `b_reason`, `status`, `U_Id`,`b_request`) VALUES ('$app_date','$app_time','$department_name','$mobile_no','$booker_name','$reason','$status','$u_id',CURRENT_TIMESTAMP())";
+
+        $result = mysqli_query($conn,$sql);
+        if($result)
+        {
+            // sending mail to the admin
+            $url ="https://google.com";
+            $bodyinfotable = '<table style="border-collapse: collapse; width: 100%;">
+                <caption>Seminar Hall Enquriey</caption>
+            <tr>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f9f9f9; white-space: nowrap;">User Account</th>
+              <td style="border: 1px solid #ddd; padding: 8px;">'.$_COOKIE['useremail'].'</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f9f9f9; white-space: nowrap;">Booker Name</th>
+              <td style="border: 1px solid #ddd; padding: 8px;">'.$booker_name.'</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f9f9f9; white-space: nowrap;">Department</th>
+              <td style="border: 1px solid #ddd; padding: 8px;">'.$department_name.'</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f9f9f9; white-space: nowrap;">Reason for Booking</th>
+              <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">'.$reason.'</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid #ddd; padding: 8px; background-color: #f9f9f9; white-space: nowrap;">Action</th>
+              <td style="border: 1px solid #ddd; padding: 8px;">
+                <a href="'.$url.'" style="color: #3498db; text-decoration: none;">Approve/Reject</a>
+              </td>
+            </tr>
+          </table>
+          
+          
+          ';
+            sendMail($bodyinfotable,"seminarhall.tccollege.org","villandark420@gmail.com","Hall Request pending");
+            header("location:requestPending.php");
+        }
+        else
+            echo "query Error";
     }
+
+    
+}
 }
 ?>
 

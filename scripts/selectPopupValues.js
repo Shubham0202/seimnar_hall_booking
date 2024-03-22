@@ -1,17 +1,20 @@
-window.addEventListener("load",()=>{
+let departmentName = document.querySelectorAll('.department');
+let departmentwrapper = document.querySelectorAll('.department-wrapper');
+// console.log(departmentName);
+window.addEventListener("DOMContentLoaded",()=>{
     const popUps = document.querySelector(".allPopUps");
     let popUpsInp = document.querySelector(".popup-inputs");
-    const departmentName = document.querySelectorAll('.department');
-    const departmentwrapper = document.querySelectorAll('.department-wrapper');
-    // console.log(departmentName);
     setTimeout(()=>{
         console.log('fetch')
         popUpsInp = document.querySelector(".popup-inputs");
+        departmentName = document.querySelectorAll('.department');
+        departmentwrapper = document.querySelectorAll('.department-wrapper');
         console.log(departmentName);
     },500)
-    // checks only if we are clicking on the input tag 
+    // checks only if we are clicking on the input tag and the department value into input tag 
     document.addEventListener('click',(e)=>{
-        console.log(e.target.classList.contains("popup-inputs"));
+        // console.log(e.target);
+        (e.target.classList.contains("department") || e.target.classList.contains("department-wrapper"))?popUpsInp.value=e.target.innerText:"";
         (e.target.classList.contains("popup-inputs"))?popUps.classList.remove('hidden'):popUps.classList.add('hidden');
     });
     
@@ -30,13 +33,5 @@ window.addEventListener("load",()=>{
   
         });
     });
-
-    // add deparment name into the input tag
-   departmentName.forEach(name=>{
-    name.addEventListener('click',()=>{
-             console.log("click");
-            popUpsInp.value=name.innerHTML;
-        });
-   });
    
 });
