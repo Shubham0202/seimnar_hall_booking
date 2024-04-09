@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+    
+    <div class="logo flex items-center justify-center py-3 lg:hidden">
+        <img class="w-14 h-14 rounded-md" src="../assets/logo/logo.jpg" alt="">
+        <p class="capitalize text-xl italic ml-1 font-bold">seminarhall booking</p>
+    </div>
+
+    <!-- mobile nav -->
+   
+    <div class="lg:hidden flex justify-between px-5 py-3 bg-white z-10">
+        <i id="hammer" class="hover:bg-gray-100 text-xl w-12 h-12 rounded-3xl p-2" data-feather="menu"></i>
+        <i id="search-tg" class="hover:bg-gray-100 text-xl w-12 h-12 rounded-full p-2" data-feather="search"></i>    
+    </div>
+    <!-- mobile slider -->
+    <!--check click on menu if slider not contains hidden class then body.classlist.add overflow-hidden -->
+    <div id="aside-slider" class="hidden fixed top-0 z-20 w-full transition-all">
+    <div class="lg:hidden flex items-start justify-between px-2 gap-3 bg-white">
+        <div class="desktop-aside w-60 h-[calc(100dvh)] flex flex-col items-start justify-between">
+            <div class="aside mt-8 w-full">
+                <!-- write a javascript for if bg-black contains class then remove hover of that element -->
+                <a href="#" class="dash-items  block cursor-default flex items-center gap-4 text-white bg-black rounded-lg py-3 px-4">
+                    <i data-feather="home"></i>
+                    <p class="capitalize">DashBoard</p>
+                </a>
+                <a href="#" class="dash-items cursor-default flex items-center gap-4 rounded-lg py-3 px-4 mt-4 hover:bg-slate-100">
+                    <i data-feather="book-open"></i>
+                    <p class="capitalize">uploaded books</p>
+                </a>
+                <a href="#" class="dash-items cursor-default flex items-center gap-4 rounded-lg py-3 px-4 mt-4 hover:bg-slate-100">
+                    <i data-feather="users"></i>
+                    <p class="capitalize">new users</p>
+                </a>
+                <a href="#" class="dash-items cursor-default flex items-center gap-4 rounded-lg py-3 px-4 mt-4 hover:bg-slate-100">
+                    <i data-feather="bell"></i>
+                    <p class="capitalize">notifications</p>
+                </a>
+                <a href="#" class="dash-items cursor-default flex items-center gap-4 rounded-lg py-3 px-4 mt-4 hover:bg-slate-100">
+                    <i data-feather="flag"></i>
+                    <p class="capitalize">reports</p>
+                </a>
+            </div>
+            <!-- logout and account -->
+            <div class="pf-lg w-full">
+                <!-- if user not signed in then replace this logout to sign in using php session -->
+                <a href="auth/user_profile.html" class="cursor-default flex items-center gap-4 rounded-lg py-3 px-4 mb-1 w-full hover:bg-slate-100">
+                    <i data-feather="user"></i>
+                    <p class="capitalize line-clamp-1">shubham chandgude</p>
+                </a>
+                <a class="cursor-default flex items-center gap-4 rounded-lg py-3 px-4 mb-4 w-full hover:bg-slate-100">
+                    <i data-feather="log-out"></i>
+                    <p class="capitalize">log out</p>
+                </a>
+            </div>
+
+        </div>
+        <div class="cross-aside p-2 mt-6 bg-gray-100 rounded-full">
+            <i id="close-aside" class="w-8 h-8" data-feather="x"></i>
+        </div>
+    </div>
+</div>
+    <!-- mobile nav end -->
+
+<!-- main section divder wrapper -->
+<!-- main of aside and main -->
+<div class="wrapper-aside-main min-h-screen lg:flex items-start bg-gray-100">
+    <!-- desk nav -->
+    <div class="hidden lg:block py-4 px-8 bg-white min-h-screen">
+        <div class="desk-logo">
+            <img class="logo-size rounded-full w-20 h-20" src="../assets/avtar/sample_img.jpg" alt="">
+            <h3 class="text-xl capitalize font-semibold mt-2">shubh</h3>
+            <p class="text-gray-400 text-lg">@shubh8268</p>
+        </div>
+    
+        <div class="desk-aside-container flex flex-col h-[calc(100dvh-200px)] items-start justify-between ">
+        <div class="aside mt-8">
+            <a href="#" class="dash-items flex items-center gap-4 text-white bg-black rounded-lg py-2 px-4">
+                <i data-feather="home"></i>
+                <p class="capitalize">dashboard</p>
+            </a>
+            <a href="#" class="dash-items flex items-center gap-4 rounded-lg py-2 px-4 mt-5 hover:bg-slate-50">
+                <i data-feather="book-open"></i>
+                <p class="capitalize">All requests</p>
+            </a>
+            <a href="#" class="dash-items flex items-center gap-4 rounded-lg py-2 px-4 mt-5 hover:bg-slate-50">
+                <i data-feather="users"></i>
+                <p class="capitalize">new Users</p>
+            </a>
+            <a href="#" class="dash-items flex items-center gap-4 rounded-lg py-2 px-4 mt-5 hover:bg-slate-50">
+                <i data-feather="bell"></i>
+                <p class="capitalize">notifications</p>
+            </a>
+            <a href="#" class="dash-items flex items-center gap-4 rounded-lg py-2 px-4 mt-5 hover:bg-slate-50">
+                <i data-feather="flag"></i>
+                <p class="capitalize">reports</p>
+            </a>
+        </div>
+        <div class="cursor-pointer flex items-center gap-4 rounded-lg py-2 px-4 mt-5 hover:bg-slate-50">
+            <i data-feather="user"></i>
+            <p class="capitalize">log in</p>
+        </div>
+    </div>    
+</div>
+    <!-- desk nav end -->
+
+<!-- main content -->
+<main class="p-4 w-full">   
+    <div class="sm:flex items-center justify-between">
+        <div class="welcome my-4">
+            <h3 class="text-xl font-bold capitalize">hello,shubh</h3>
+            <p class="text-lg text-gray-400 capitalize">today is monday,18 december 2023</p>
+        </div>
+        <button class="flex items-center gap-1 text-md font-semibold capitalize bg-black text-white py-2 px-7 rounded-lg">
+            <i data-feather="book"></i>
+            <span>Push notification</span>
+        </button>
+    </div>
+
+    <!-- search bar -->
+<div id="search-bar" class="hidden mt-4 sm:mt-0 lg:flex items-center bg-white w-fit max-w-[90vw] rounded-lg shadow">
+    <input class=" placeholder:capitalize px-4 py-2 bg-transparent outline-none w-[100vw] sm:w-96 capitalize" type="text" placeholder="Search">
+    <div class="p-3 sm:cursor-pointer cursor-default">
+        <i data-feather="search"></i>
+    </div>
+</div>
+<!-- search bar end  -->
+    <!-- stats -->
+    <div class="show-dash-result">
+
+    <div class="sm:bg-white sm:m-4 sm:px-4 py-6 rounded-lg grid grid-cols-2 md:grid-cols-3 gap-3">
+
+        <div class="card bg-white px-4 py-6 rounded-lg sm:rounded-none sm:border-r-2 border-gray-300">
+            <h3 class="capitalize text-lg flex items-center sm:justify-center gap-1">
+                <i class="text-pink-500" data-feather="book-open"></i>
+                <span> books</span>
+                </h3>
+            <div class="flex items-center justify-center mt-1">
+                <p class="text-xl font-semibold">14+</p>
+                <p class="today-added text-lg rounded-full bg-green-200 px-1 text-green-700"><i class="inline-block" data-feather="arrow-up-right"></i></p>
+            </div>
+        </div>
+        
+        <div class="card bg-white px-4 py-6 rounded-lg sm:rounded-none sm:border-r-2 border-gray-300">
+            <h3 class="capitalize text-lg flex items-center sm:justify-center gap-1">
+                <i class="text-violet-600" data-feather="users"></i>
+                <span>users</span>
+            </h3>
+            <div class="flex items-center justify-center mt-1">
+                <p class="text-xl font-semibold">20+</p>
+                <p class="today-added text-lg rounded-full bg-green-200 px-1 text-green-700"><i class="inline-block" data-feather="arrow-up-right"></i></p>
+            </div>
+        </div>
+        <div class="card bg-white px-4 py-6 rounded-lg sm:rounded-none sm:border-r-2 border-gray-300">
+            <h3 class="capitalize text-lg flex items-center sm:justify-center gap-1">
+                <i class="text-red-500" data-feather="flag"></i>
+                <span>reports</span>
+            </h3>
+            <div class="flex items-center justify-center mt-1">
+                <p class="text-xl font-semibold">0+</p>
+                <!-- <p class="today-added text-lg rounded-full bg-green-200 px-1 text-green-700">2+ <i class="inline-block" data-feather="arrow-up-right"></i></p> -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- monthly revenue -->
+    <div class="sm:m-4 p-4 bg-white rounded-lg">
+        <h3 class="text-lg capitalize font-semibold">monthly revenue</h3>
+        <p class="text-2xl font-bold">₹15,000</p>
+
+        <!-- monthwise bars -->
+        <!-- max-height of bar is h-24 -->
+    <div class="my-6 flex flex-wrap items-center gap-5 sm:gap-4">
+           <!-- to show price month use mouse enter and leave event on the bar -->
+           <!-- and mobile use touchstart event -->
+ <div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">jan</p>
+</div>
+ <div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">feb</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">mar</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">apr</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">may</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">jun</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">jul</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">aug</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">sep</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">oct</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">nov</p>
+</div>
+<div class="bar flex flex-col items-center justify-end h-32 relative">
+    <p class="hidden price-month absolute bottom-full">₹50</p>
+    <div class="w-8 h-24 bg-gray-300 rounded hover:bg-blue-600"></div>
+    <p class="month capitalize text-gray-400">dec</p>
+</div>
+            
+           
+
+        </div>
+    </div>
+
+    </div>
+</main>
+</div>
+</body>
+<script>
+    feather.replace();
+  </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js" integrity="sha512-7Au1ULjlT8PP1Ygs6mDZh9NuQD0A5prSrAUiPHMXpU6g3UMd8qesVnhug5X4RoDr35x5upNpx0A6Sisz1LSTXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js" integrity="sha512-LQQDtPAueBcmGXKdOBcMkrhrtqM7xR2bVrnMtYZ8ImAZhFlIb5xrMqQ6uZviyeSB+4mYj89ta8niiCIQM1Gj0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="authScripts/hammer.js"></script>
+  <script src="authScripts/searchToggle.js"></script>
+  <script src="authAjaxScripts/dashboard.js"></script>
+  <script src="authScripts/activeDashItem.js"></script>
+</html>
