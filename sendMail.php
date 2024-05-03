@@ -23,16 +23,16 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'your email';                     //SMTP username
+    $mail->Username   = 'YOUR_EMAIL_HERE';                     //SMTP username
     $mail->Password   = '2_FA_PASSWORD_HERE_FROM_PASSWORD_MANAGER';                               //SMTP password
     $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('YOUR_Email', $mailsetForm);
+    $mail->setFrom('YOUR_Email_HERE', $mailsetForm);
     
     $mail->addAddress($mailTO);
-    $mail->addReplyTo('YOUR_EMAIL', 'seminarhall.tccollege.org');
+    $mail->addReplyTo('YOUR_EMAIL_HERE', 'seminarhall.example.com');
     $mail->isHTML(true);
     $mail->Subject = $mailSubject;
     $mail->Body = $bodyMsg;
