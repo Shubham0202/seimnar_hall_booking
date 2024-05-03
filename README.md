@@ -10,6 +10,8 @@ This project is a web-based seminar hall booking system developed using HTML, Ta
 - **Booking Management**: Users can view, edit, and cancel their bookings.
 - **Admin Panel**: Admins have access to manage seminar halls, bookings, and user accounts.
 - **Search Functionality**: Users can search for specific seminar halls based on various criteria.
+- **Personalize Mail Sending Functionality**: Admin can send mail to the specific User according to their need .
+
 
 ## Installation
 
