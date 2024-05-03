@@ -1,6 +1,6 @@
 # Seminar Hall Booking Project
 
-This project is a web-based seminar hall booking system developed using HTML, Tailwind CSS, JavaScript, PHP, and MySQL. It allows users to browse available seminar halls, book them for events, and manage their bookings.
+This project is a web-based seminar hall booking system developed using HTML, Tailwind CSS, JavaScript, PHP, and MySQL. It allows users to browse available seminar halls, book them for events, and manage their bookings,with mail sending system.
 
 ## Features
 
